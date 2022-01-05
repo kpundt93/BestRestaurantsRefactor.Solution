@@ -23,6 +23,7 @@ else
       <li>@join.Cuisine.CuisineName</li>
       @using (Html.BeginForm("DeleteCuisine", "Restaurants"))
       {
+        @Html.Hidden("restaurantId", @Model.RestaurantId)
         @Html.Hidden("joinId", @join.RestaurantCuisineId)
         <input type="submit" value="Delete" />
       }

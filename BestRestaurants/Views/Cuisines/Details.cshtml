@@ -1,24 +1,29 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
-@using BestRestaurants.Models
-
-@{
-  Cuisine cuisine = ViewData["cuisine"] as Cuisine;
-  List<Restaurant> restaurants = ViewData["restaurants"] as List<Restaurant>;
-}
+@model BestRestaurants.Models.Cuisine
 
 <h2>Cuisine Details</h2>
 <hr />
 
-<h3>Cuisine Name: @cuisine.CuisineName</h3>
-<ul>
-@foreach (Restaurant restaurant in restaurants)
+
+<h3>Cuisine Name: @Html.DisplayFor(model => model.CuisineName)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
 {
-  <li>@Html.ActionLink(restaurant.Name, "Details", "Restaurants", new { id = restaurant.RestaurantId})</li>
+  <p>There are no restaurants that serve this cuisine.</p>
 }
-</ul>
-<p>@Html.ActionLink("Edit Cuisine", "Edit", new { id = cuisine.CuisineId })</p>
-<p>@Html.ActionLink("Delete Cuisine", "Delete", new { id = cuisine.CuisineId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p> *@
+else
+{
+  <h4>The following restaurants serve this cuisine:</h4>
+  <ul>
+  @foreach (var join in Model.JoinEntities)
+  {
+    <li>@join.Restaurant.Name</li>
+  }
+  </ul>
+}
+<p>@Html.ActionLink("Edit Cuisine", "Edit", new { id = Model.CuisineId })</p>
+<p>@Html.ActionLink("Delete Cuisine", "Delete", new { id = Model.CuisineId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>

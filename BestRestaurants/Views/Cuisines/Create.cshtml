@@ -1,4 +1,4 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
@@ -7,9 +7,9 @@
 <h4>Add a new cuisine</h4>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.CuisineName)
+  @Html.LabelFor(model => model.CuisineName, "Cuisine Name")
   @Html.TextBoxFor(model => model.CuisineName)
   <input type="submit" value="Add a new cuisine" />
 }
 
-<p>@Html.ActionLink("Show all cuisines", "Index")</p> *@
+<p>@Html.ActionLink("Show all cuisines", "Index")</p>
