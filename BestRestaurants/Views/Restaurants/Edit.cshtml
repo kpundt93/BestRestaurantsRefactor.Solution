@@ -1,4 +1,4 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
@@ -21,9 +21,9 @@
   @Html.LabelFor(model => model.Location)
   @Html.EditorFor(model => model.Location)
 
-  @Html.LabelFor(model => model.Cuisine)
+  @Html.Label("Select a cuisine")
   @Html.DropDownList("CuisineId")
 
   <input type="submit" value="Save" />
 }
-<p>@Html.ActionLink("Back to list", "Index")</p> *@
+<p>@Html.ActionLink("Back to list", "Index")</p>
