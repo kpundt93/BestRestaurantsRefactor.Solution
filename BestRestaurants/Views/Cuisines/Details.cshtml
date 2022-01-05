@@ -1,0 +1,24 @@
+@* @{
+  Layout = "_Layout";
+}
+
+@using BestRestaurants.Models
+
+@{
+  Cuisine cuisine = ViewData["cuisine"] as Cuisine;
+  List<Restaurant> restaurants = ViewData["restaurants"] as List<Restaurant>;
+}
+
+<h2>Cuisine Details</h2>
+<hr />
+
+<h3>Cuisine Name: @cuisine.CuisineName</h3>
+<ul>
+@foreach (Restaurant restaurant in restaurants)
+{
+  <li>@Html.ActionLink(restaurant.Name, "Details", "Restaurants", new { id = restaurant.RestaurantId})</li>
+}
+</ul>
+<p>@Html.ActionLink("Edit Cuisine", "Edit", new { id = cuisine.CuisineId })</p>
+<p>@Html.ActionLink("Delete Cuisine", "Delete", new { id = cuisine.CuisineId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p> *@
